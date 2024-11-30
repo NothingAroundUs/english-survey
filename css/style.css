@@ -5,3 +5,9 @@
     right: 100px;
     width: 100px;
 }
+
+@media (max-width: 600px) {
+    .manara-logo {
+        right: 10px;
+    }
+}
