@@ -38,9 +38,9 @@ document.querySelector('#q7_other').addEventListener('input', function () {
 
 function clearForm() {
     const form = document.querySelector('#surveyForm');
-    
+
     form.reset();
-    
+
     const otherInputContainer = document.querySelector('#q7OtherContainer');
     if (otherInputContainer) {
         otherInputContainer.style.display = 'none';
@@ -48,7 +48,7 @@ function clearForm() {
 
     void form.offsetHeight;
 
-    setTimeout(function() {
+    setTimeout(function () {
         form.classList.remove('was-validated');
     }, 3);
 }
