@@ -13,9 +13,9 @@
         })
 })()
 
-document.getElementById('q7').addEventListener('change', function () {
-    var otherContainer = document.getElementById('q7OtherContainer');
-    var otherInput = document.getElementById('q7_other');
+document.querySelector('#q7').addEventListener('change', function () {
+    var otherContainer = document.querySelector('#q7OtherContainer');
+    var otherInput = document.querySelector('#q7_other');
     if (this.value === 'Other') {
         otherContainer.style.display = 'block';
         otherInput.setAttribute('required', 'true');
@@ -27,7 +27,7 @@ document.getElementById('q7').addEventListener('change', function () {
     }
 });
 
-document.getElementById('q7_other').addEventListener('input', function () {
+document.querySelector('#q7_other').addEventListener('input', function () {
     if (this.value.trim() === '') {
         this.classList.add('is-invalid');
     } else {
@@ -35,18 +35,48 @@ document.getElementById('q7_other').addEventListener('input', function () {
     }
 });
 
-window.addEventListener("load", function() {
-    const form = document.getElementById('surveyForm');
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const data = new FormData(form);
-      const action = e.target.action;
-      fetch(action, {
-        method: 'POST',
-        body: data,
-      })
-      .then(() => {
-        alert("Success!");
-      })
+
+function clearForm() {
+    const form = document.querySelector('#surveyForm');
+    
+    form.reset();
+    
+    const otherInputContainer = document.querySelector('#q7OtherContainer');
+    if (otherInputContainer) {
+        otherInputContainer.style.display = 'none';
+    }
+
+    void form.offsetHeight;
+
+    setTimeout(function() {
+        form.classList.remove('was-validated');
+    }, 3);
+}
+
+
+window.addEventListener("load", function () {
+    const form = document.querySelector('#surveyForm');
+    const link = document.querySelector('#goToThanks')
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            return;
+        }
+
+        const data = new FormData(form);
+        const action = e.target.action;
+
+        fetch(action, {
+            method: 'POST',
+            body: data,
+        })
+            .then(() => {
+                link.click()
+            })
+            .catch(error => {
+                alert("Error submitting form.");
+            });
     });
-  });
+});

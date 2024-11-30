@@ -9,15 +9,23 @@
     <!-- FUCK BOOTSTRAP WHY DO I EVEN USE IT -->
 </head>
 
-<body>
+<body class="bg-dark" data-bs-theme="dark">
+    <a href="/thankyou.html" class="d-none" id="goToThanks"></a>
     <!-- DO NOT FUCK WITH THE CODE -->
-    <div class="container my-5 card p-5">
+    <div class="contianer text-center mt-5 mb-0 pb-0" style="font-size: 10px;">
+        <p>Manaret El Maadi American Devision</p>
+        <p>English Department</p>
+        <p>Project Step 2 By Hussein Taha</p>
+    </div>
+    <div class="container mb-5 card p-5">
         <h2 class="text-center">Survey on Belonging and Inclusivity</h2>
-        <form id="surveyForm" class="needs-validation" method="POST" action="https://script.google.com/macros/s/AKfycbzxPBPpWB-xHjWeudRPTUdORBwB3UoEaus1eorSECEpaILi3n2gPybJBlJE32xfRdUH/exec" novalidate>
+        <form id="surveyForm" class="needs-validation floating-form" method="POST"
+            action="https://script.google.com/macros/s/AKfycbzxPBPpWB-xHjWeudRPTUdORBwB3UoEaus1eorSECEpaILi3n2gPybJBlJE32xfRdUH/exec"
+            novalidate>
             <div class="mb-3">
                 <label for="q1" class="form-label">1. On a scale of 1 to 5, how important do you think it is to make
                     others feel a sense of belonging?</label>
-                <select class="form-select" id="q1" name="q1" required>
+                <select class="form-select bg-dark" id="q1" name="q1" required>
                     <option value="" disabled selected hidden>Choose an option</option>
                     <option value="1">1 = Not important</option>
                     <option value="2">2</option>
@@ -28,10 +36,11 @@
                 <div class="invalid-feedback">Please select an option.</div>
             </div>
             <!-- I HAD ADDING DIVS FOR SECTIONS BUT I HAVE TO -->
+            <hr class="border border-secondary-subtle border-1 opacity-50">
             <div class="mb-3">
                 <label for="q2" class="form-label">2. How often do you actively try to include others in conversations
                     or activities?</label>
-                <select class="form-select" id="q2" name="q2" required>
+                <select class="form-select bg-dark" id="q2" name="q2" required>
                     <option value="" disabled selected hidden>Choose an option</option>
                     <option value="Never">Never</option>
                     <option value="Rarely">Rarely</option>
@@ -42,10 +51,11 @@
                 <div class="invalid-feedback">Please select an option.</div>
             </div>
 
+            <hr class="border border-secondary-subtle border-1 opacity-50">
             <div class="mb-3">
                 <label for="q3" class="form-label">3. Do you listen actively and show interest when others share their
                     thoughts or feelings?</label>
-                <select class="form-select" id="q3" name="q3" required>
+                <select class="form-select bg-dark" id="q3" name="q3" required>
                     <option value="" disabled selected hidden>Choose an option</option>
                     <option value="Yes">Yes</option>
                     <option value="Sometimes">Sometimes</option>
@@ -54,17 +64,21 @@
                 <div class="invalid-feedback">Please select an option.</div>
             </div>
 
-            <div class="mb-3">
+            <hr class="border border-secondary-subtle border-1 opacity-50">
+            <div class="mb-3 form-floating">
+                <textarea class="form-control bg-dark" id="q4" name="q4" rows="3"
+                    placeholder="4. What steps do you take to ensure no one feels left out in group settings?"
+                    required></textarea>
                 <label for="q4" class="form-label">4. What steps do you take to ensure no one feels left out in group
                     settings?</label>
-                <textarea class="form-control" id="q4" name="q4" rows="3" required></textarea>
                 <div class="invalid-feedback">This field is required.</div>
             </div>
 
+            <hr class="border border-secondary-subtle border-1 opacity-50">
             <div class="mb-3">
                 <label for="q5" class="form-label">5. How frequently do you offer positive encouragement or support to
                     people around you?</label>
-                <select class="form-select" id="q5" name="q5" required>
+                <select class="form-select bg-dark" id="q5" name="q5" required>
                     <option value="" disabled selected hidden>Choose an option</option>
                     <option value="Rarely">Rarely</option>
                     <option value="Occasionally">Occasionally</option>
@@ -74,10 +88,11 @@
                 <div class="invalid-feedback">Please select an option.</div>
             </div>
 
+            <hr class="border border-secondary-subtle border-1 opacity-50">
             <div class="mb-3">
                 <label for="q6" class="form-label">6. Are you open to learning about different cultures, perspectives,
                     or experiences to foster belonging?</label>
-                <select class="form-select" id="q6" name="q6" required>
+                <select class="form-select bg-dark" id="q6" name="q6" required>
                     <option value="" disabled selected hidden>Choose an option</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -86,9 +101,10 @@
                 <div class="invalid-feedback">Please select an option.</div>
             </div>
 
+            <hr class="border border-secondary-subtle border-1 opacity-50">
             <div class="mb-3">
                 <label for="q7" class="form-label">7. How do you handle situations where someone feels excluded?</label>
-                <select class="form-select" id="q7" name="q7" required>
+                <select class="form-select bg-dark" id="q7" name="q7" required>
                     <option value="" disabled selected hidden>Choose an option</option>
                     <option value="Try to mediate">Try to mediate</option>
                     <option value="Ignore the issue">Ignore the issue</option>
@@ -98,23 +114,27 @@
                 <div class="invalid-feedback">Please select an option.</div>
             </div>
 
-            <div class="mb-3" id="q7OtherContainer" style="display: none;">
+            <hr class="border border-secondary-subtle border-1 opacity-50">
+            <div class="mb-3 form-floating" id="q7OtherContainer" style="display: none;">
+                <input type="text" class="form-control bg-dark" id="q7_other" name="q7_other"
+                    placeholder="Please specify:">
                 <label for="q7_other" class="form-label">Please specify:</label>
-                <input type="text" class="form-control" id="q7_other" name="q7_other">
                 <div class="invalid-feedback">This field is required if "Other" is selected.</div>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 form-floating">
+                <textarea class="form-control bg-dark" id="q8" name="q8" rows="3" placeholder="8. What kind of environment do you think helps people feel most
+                    welcome and accepted" required></textarea>
                 <label for="q8" class="form-label">8. What kind of environment do you think helps people feel most
                     welcome and accepted?</label>
-                <textarea class="form-control" id="q8" name="q8" rows="3" required></textarea>
                 <div class="invalid-feedback">This field is required.</div>
             </div>
 
+            <hr class="border border-secondary-subtle border-1 opacity-50">
             <div class="mb-3">
                 <label for="q9" class="form-label">9. Do you think your actions set an example of inclusivity and
                     acceptance for others?</label>
-                <select class="form-select" id="q9" name="q9" required>
+                <select class="form-select bg-dark" id="q9" name="q9" required>
                     <option value="" disabled selected hidden>Choose an option</option>
                     <option value="Yes">Yes</option>
                     <option value="Sometimes">Sometimes</option>
@@ -123,14 +143,17 @@
                 <div class="invalid-feedback">Please select an option.</div>
             </div>
 
-            <div class="mb-3">
+            <hr class="border border-secondary-subtle border-1 opacity-50">
+            <div class="mb-3 form-floating">
+                <textarea class="form-control bg-dark" id="q10" name="q10" rows="3" placeholder="10. What more could you do to help others feel a greater sense of
+                    belonging?" required></textarea>
                 <label for="q10" class="form-label">10. What more could you do to help others feel a greater sense of
                     belonging?</label>
-                <textarea class="form-control" id="q10" name="q10" rows="3" required></textarea>
                 <div class="invalid-feedback">This field is required.</div>
             </div>
             <!-- WHY DOES THE BUTTON LOOK BAD BRO -->
-            <button type="submit" class="btn btn-primary-outline">Submit</button>
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+            <button type="submit" class="btn btn-outline-secondary" onclick="clearForm()">Clear form</button>
         </form>
     </div>
 
