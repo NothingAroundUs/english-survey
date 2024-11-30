@@ -6,6 +6,11 @@
     width: 100px;
 }
 
+.spinner-border {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
 @media (max-width: 600px) {
     .manara-logo {
         right: 10px;
