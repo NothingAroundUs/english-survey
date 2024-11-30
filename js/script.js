@@ -1,5 +1,7 @@
 (function () {
     'use strict';
+
+    // Enable Bootstrap validation styles
     var forms = document.querySelectorAll('.needs-validation');
     Array.prototype.slice.call(forms).forEach(function (form) {
         form.addEventListener('submit', function (event) {
@@ -12,6 +14,7 @@
     });
 })();
 
+// Show or hide additional input field for "Other" option
 document.querySelector('#q7').addEventListener('change', function () {
     var otherContainer = document.querySelector('#q7OtherContainer');
     var otherInput = document.querySelector('#q7_other');
@@ -34,6 +37,7 @@ document.querySelector('#q7_other').addEventListener('input', function () {
     }
 });
 
+// Clear form and reset validation styles
 function clearForm() {
     const form = document.querySelector('#surveyForm');
     form.reset();
@@ -43,49 +47,57 @@ function clearForm() {
         otherInputContainer.style.display = 'none';
     }
 
-    void form.offsetHeight;
+    void form.offsetHeight; // Force reflow
 
     setTimeout(function () {
         form.classList.remove('was-validated');
     }, 3);
 }
 
+// Add spinner and submission handling logic
 window.addEventListener("load", function () {
     const form = document.querySelector('#surveyForm');
     const link = document.querySelector('#goToThanks');
-    const submitButton = document.querySelector('button[type="submit"]');
-
-    const loadingSpinner = document.createElement('div');
-    loadingSpinner.className = 'spinner-border text-primary d-none';
-    loadingSpinner.setAttribute('role', 'status');
-    loadingSpinner.innerHTML = '<span class="visually-hidden">Loading...</span>';
-    submitButton.insertAdjacentElement('afterend', loadingSpinner);
+    const spinner = document.querySelector('.spinner-border');
+    const submitButton = form.querySelector('button[type="submit"]');
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
+        // Form validation
         if (!form.checkValidity()) {
             form.classList.add('was-validated');
             return;
         }
 
+        // Disable submit button and show spinner
         submitButton.disabled = true;
-        loadingSpinner.classList.remove('d-none');
+        spinner.classList.remove('d-none');
 
+        // Prepare form data
         const data = new FormData(form);
-        const action = e.target.action;
+        const action = form.action;
 
+        // Submit the form
         fetch(action, {
             method: 'POST',
             body: data,
         })
-            .then(() => {
-                link.click();
+            .then(response => {
+                if (response.ok) {
+                    // Redirect to thank you page
+                    link.click();
+                } else {
+                    throw new Error('Failed to submit form');
+                }
             })
             .catch(error => {
-                alert("Error submitting form.");
+                alert("An error occurred: " + error.message);
+            })
+            .finally(() => {
+                // Stop spinner and re-enable button (if needed)
+                spinner.classList.add('d-none');
                 submitButton.disabled = false;
-                loadingSpinner.classList.add('d-none');
             });
     });
 });
