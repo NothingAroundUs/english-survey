@@ -53,7 +53,7 @@ function clearForm() {
 
 window.addEventListener("load", function () {
     const form = document.querySelector('#surveyForm');
-    const link = document.querySelector('#goToThanks');
+    // const link = document.querySelector('#goToThanks');
     const spinner = document.querySelector('.spinner-border');
     const submitButton = form.querySelector('button[type="submit"]');
 
@@ -77,7 +77,7 @@ window.addEventListener("load", function () {
         })
             .then(response => {
                 if (response.ok) {
-                    link.click();
+                    window.location.href = "/english-survey/thankyou.html";
                 } else {
                     throw new Error('Failed to submit form');
                 }
