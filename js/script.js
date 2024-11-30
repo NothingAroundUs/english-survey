@@ -34,3 +34,19 @@ document.getElementById('q7_other').addEventListener('input', function () {
         this.classList.remove('is-invalid');
     }
 });
+
+window.addEventListener("load", function() {
+    const form = document.getElementById('surveyForm');
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      const action = e.target.action;
+      fetch(action, {
+        method: 'POST',
+        body: data,
+      })
+      .then(() => {
+        alert("Success!");
+      })
+    });
+  });
